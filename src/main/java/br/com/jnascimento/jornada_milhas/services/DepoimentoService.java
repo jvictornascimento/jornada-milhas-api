@@ -17,7 +17,7 @@ public class DepoimentoService {
     public DepoimentoModel getOne(UUID id){
         return null;
     }
-    public List<DepoimentoModel> getAll(UUID id){
+    public List<DepoimentoModel> getAll(){
         return null;
     }
     public DepoimentoModel saveOrUpdate(DepoimentoModel model){
