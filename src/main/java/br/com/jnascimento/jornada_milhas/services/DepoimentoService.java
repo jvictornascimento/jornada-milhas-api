@@ -4,6 +4,7 @@ import br.com.jnascimento.jornada_milhas.models.DepoimentoModel;
 import br.com.jnascimento.jornada_milhas.repositories.DepoimentoRepository;
 import br.com.jnascimento.jornada_milhas.services.exceptions.DepoimentoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,6 +51,8 @@ public class DepoimentoService {
     }
 
 
-
-
+    public List<DepoimentoModel> depoimentos() {
+        PageRequest pageable = PageRequest.of(0, 3);
+        return repository.findRandomDepoimentos(pageable);
+    }
 }
