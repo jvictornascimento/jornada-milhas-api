@@ -3,10 +3,13 @@ package br.com.jnascimento.jornada_milhas.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
 @Table (name = "TB_DEPOIMENTOS")
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,16 +17,18 @@ import java.util.UUID;
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
-public class DepoimentoModel {
+public class DepoimentoModel implements Serializable {
+    @Serial
+    private static final long serialVersionUID =1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     private UUID id;
 
-    private String Foto;
+    private String foto;
     @Column(columnDefinition = "TEXT")
-    private String Depoimento;
+    private String depoimento;
     private String nomeAutor;
 
 }

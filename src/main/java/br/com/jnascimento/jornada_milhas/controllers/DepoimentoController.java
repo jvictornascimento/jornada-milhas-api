@@ -29,12 +29,14 @@ public class DepoimentoController {
     public ResponseEntity<DepoimentoModel> save(@RequestBody DepoimentoModel depoimentoModel){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.saveOrUpdate(depoimentoModel));
     }
-    @PutMapping
-    public ResponseEntity<DepoimentoModel> update(@RequestBody DepoimentoModel depoimentoModel){
+    @PutMapping("/{uuid}")
+    public ResponseEntity<DepoimentoModel> update(@PathVariable(name = "uuid") UUID uuid, @RequestBody DepoimentoModel depoimentoModel){
+        depoimentoModel.setId(uuid);
         return ResponseEntity.status(HttpStatus.OK).body(service.saveOrUpdate(depoimentoModel));
     }
     @DeleteMapping("/{uuid}")
     public ResponseEntity delete(@PathVariable(name = "uuid") UUID uuid){
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(service.delete(uuid));
+        service.delete(uuid);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
