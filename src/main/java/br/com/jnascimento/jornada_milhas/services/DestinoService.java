@@ -48,8 +48,15 @@ public class DestinoService {
     public void delete(UUID id){
         var depoimento = repository.findById(id);
         if (depoimento.isEmpty()){
-            throw new DepoimentoException("Id: "+" não encontrado!");
+            throw new DestinoException("Id: "+ id +" não encontrado!");
         }
          repository.delete(depoimento.get());
+    }
+    public DestinoModel findByName(String nome){
+        var destino = repository.findByNomeContainingIgnoreCase(nome);
+        if (destino.isEmpty()){
+            throw new DestinoException("Nenhum destino foi encontrado");
+        }
+        return destino.get();
     }
 }
