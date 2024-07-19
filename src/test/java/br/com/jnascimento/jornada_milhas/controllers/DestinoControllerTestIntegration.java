@@ -42,7 +42,7 @@ class DestinoControllerTestIntegration {
     @Test
     void deveriaRetornarUm200ParaSolicitacoesGetComParamento() throws Exception {
         var response =  mvc.perform(
-                get("/destinos/c92e2211-63be-4a98-ad92-09ec5d93b68b")
+                get("/destinos/1")
         ).andReturn().getResponse();
 
         assertEquals(200,response.getStatus());
@@ -52,9 +52,11 @@ class DestinoControllerTestIntegration {
     void deveriaRetornarUm201ParaSolicitacoesPost()throws Exception {
         String json = """
                 {
-                    "nome":"china",
-                  	"preco":"1700.00",
-                  	"foto":"uma bem legal!"
+                    	"nome":"China",
+                     	"foto1":"caminho-url-para-foto1",
+                     	"foto2":"caminho-url-para-foto2",
+                     	"meta":"alguma meta",
+                     	"textoDescritivo":"texto"
                 }""";
 
         var response = mvc.perform(
@@ -74,7 +76,7 @@ class DestinoControllerTestIntegration {
                 }""";
 
         var response = mvc.perform(
-                put("/destinos/c92e2211-63be-4a98-ad92-09ec5d93b68b")
+                put("/destinos/1")
                         .content(json)
                         .contentType(MediaType.APPLICATION_JSON)
         ).andReturn().getResponse();
@@ -85,7 +87,7 @@ class DestinoControllerTestIntegration {
     @Test
     void deveriaRetornarUm204ParaSolicitacoesDelete()throws Exception {
         var response = mvc.perform(
-                delete("/destinos/c92e2211-63be-4a98-ad92-09ec5d93b68b")
+                delete("/destinos/1")
         ).andReturn().getResponse();
 
         assertEquals(204, response.getStatus());
