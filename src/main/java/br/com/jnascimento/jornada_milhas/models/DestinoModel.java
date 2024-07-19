@@ -1,6 +1,7 @@
 package br.com.jnascimento.jornada_milhas.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.io.Serial;
@@ -23,7 +24,15 @@ public class DestinoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     private UUID id;
+    @NotBlank
     private String nome;
-    private Double preco;
-    private String foto;
+    @NotBlank
+    private String foto1;
+    @NotBlank
+    private String foto2;
+    @NotBlank
+    @Column(length = 160)
+    private String meta;
+    private String textoDescritivo;
+
 }

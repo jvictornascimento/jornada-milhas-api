@@ -40,8 +40,11 @@ public class DestinoService {
     private DestinoModel updateData(DestinoModel model) {
         var data = repository.findById(model.getId()).orElseThrow(DestinoException::new);
             data.setNome((model.getNome()!=null)?model.getNome():data.getNome());
-            data.setFoto((model.getFoto()!=null)?model.getFoto():data.getFoto());
-            data.setPreco((model.getPreco()!=null)?model.getPreco():data.getPreco());
+            data.setFoto1((model.getFoto1()!=null)?model.getFoto1():data.getFoto1());
+            data.setFoto2((model.getFoto2()!=null)?model.getFoto2():data.getFoto2());
+            data.setMeta((model.getMeta()!=null)?model.getMeta():data.getMeta());
+            data.setTextoDescritivo((model.getTextoDescritivo()!=null)?model.getTextoDescritivo():data.getTextoDescritivo());
+
             return data;
     }
 

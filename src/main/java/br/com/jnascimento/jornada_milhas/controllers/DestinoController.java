@@ -4,6 +4,7 @@ import br.com.jnascimento.jornada_milhas.models.DepoimentoModel;
 import br.com.jnascimento.jornada_milhas.models.DestinoModel;
 import br.com.jnascimento.jornada_milhas.services.DepoimentoService;
 import br.com.jnascimento.jornada_milhas.services.DestinoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -35,11 +36,11 @@ public class DestinoController {
         return ResponseEntity.status(HttpStatus.OK).body(service.findByName(nome));
     }
     @PostMapping
-    public ResponseEntity<DestinoModel> save(@RequestBody DestinoModel destinoModel){
+    public ResponseEntity<DestinoModel> save(@RequestBody @Valid DestinoModel destinoModel){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.saveOrUpdate(destinoModel));
     }
     @PutMapping("/{uuid}")
-    public ResponseEntity<DestinoModel> update(@PathVariable(name = "uuid") UUID uuid, @RequestBody DestinoModel destinoModel){
+    public ResponseEntity<DestinoModel> update(@PathVariable(name = "uuid") UUID uuid, @RequestBody  DestinoModel destinoModel){
         destinoModel.setId(uuid);
         return ResponseEntity.status(HttpStatus.OK).body(service.saveOrUpdate(destinoModel));
     }
