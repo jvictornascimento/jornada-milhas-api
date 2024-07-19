@@ -24,7 +24,7 @@ public class DepoimentoModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
-    private UUID id;
+    private Long id;
 
     private String foto;
     @Column(columnDefinition = "TEXT")

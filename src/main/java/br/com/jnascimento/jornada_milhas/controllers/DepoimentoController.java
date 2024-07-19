@@ -17,9 +17,9 @@ public class DepoimentoController {
     @Autowired
     private DepoimentoService service;
 
-    @GetMapping("/{uuid}")
-    public ResponseEntity<DepoimentoModel> getOne(@PathVariable(name = "uuid") UUID uuid){
-        return ResponseEntity.status(HttpStatus.OK).body(service.getOne(uuid));
+    @GetMapping("/{id}")
+    public ResponseEntity<DepoimentoModel> getOne(@PathVariable(name = "id") Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(service.getOne(id));
     }
     @GetMapping()
     public ResponseEntity<List<DepoimentoModel>> getAll(){
@@ -29,14 +29,14 @@ public class DepoimentoController {
     public ResponseEntity<DepoimentoModel> save(@RequestBody DepoimentoModel depoimentoModel){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.saveOrUpdate(depoimentoModel));
     }
-    @PutMapping("/{uuid}")
-    public ResponseEntity<DepoimentoModel> update(@PathVariable(name = "uuid") UUID uuid, @RequestBody DepoimentoModel depoimentoModel){
-        depoimentoModel.setId(uuid);
+    @PutMapping("/{id}")
+    public ResponseEntity<DepoimentoModel> update(@PathVariable(name = "id") Long id, @RequestBody DepoimentoModel depoimentoModel){
+        depoimentoModel.setId(id);
         return ResponseEntity.status(HttpStatus.OK).body(service.saveOrUpdate(depoimentoModel));
     }
-    @DeleteMapping("/{uuid}")
-    public ResponseEntity delete(@PathVariable(name = "uuid") UUID uuid){
-        service.delete(uuid);
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable(name = "id") Long id){
+        service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.UUID;
 @Repository
-public interface DepoimentoRepository extends JpaRepository<DepoimentoModel, UUID> {
+public interface DepoimentoRepository extends JpaRepository<DepoimentoModel, Long> {
     @Query("SELECT d FROM DepoimentoModel d ORDER BY FUNCTION('RANDOM')") // Use 'RANDOM' para PostgreSQL
     List<DepoimentoModel> findRandomDepoimentos(Pageable pageable);
 }

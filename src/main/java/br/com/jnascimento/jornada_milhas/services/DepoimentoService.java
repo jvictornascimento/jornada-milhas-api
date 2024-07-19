@@ -16,7 +16,7 @@ public class DepoimentoService {
     @Autowired
     private DepoimentoRepository repository;
 
-    public DepoimentoModel getOne(UUID id){
+    public DepoimentoModel getOne(Long id){
          return repository.findById(id).orElseThrow(DepoimentoException::new);
     }
     public List<DepoimentoModel> getAll(){
@@ -42,7 +42,7 @@ public class DepoimentoService {
             return data;
     }
 
-    public void delete(UUID id){
+    public void delete(Long id){
         var depoimento = repository.findById(id);
         if (depoimento.isEmpty()){
             throw new DepoimentoException("Id: "+" não encontrado!");

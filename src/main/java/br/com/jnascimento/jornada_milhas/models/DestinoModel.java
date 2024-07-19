@@ -23,7 +23,7 @@ public class DestinoModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
-    private UUID id;
+    private Long id;
     @NotBlank
     private String nome;
     @NotBlank

@@ -2,6 +2,7 @@ package br.com.jnascimento.jornada_milhas.services;
 
 import br.com.jnascimento.jornada_milhas.models.DepoimentoModel;
 import br.com.jnascimento.jornada_milhas.models.DestinoModel;
+import br.com.jnascimento.jornada_milhas.models.dtos.DestinoDto;
 import br.com.jnascimento.jornada_milhas.repositories.DepoimentoRepository;
 import br.com.jnascimento.jornada_milhas.repositories.DestinoRepository;
 import br.com.jnascimento.jornada_milhas.services.exceptions.DepoimentoException;
@@ -19,8 +20,9 @@ public class DestinoService {
     @Autowired
     private DestinoRepository repository;
 
-    public DestinoModel getOne(UUID id){
-         return repository.findById(id).orElseThrow(DestinoException::new);
+    public DestinoDto getOne(Long id){
+        var destino = repository.findById(id).orElseThrow(DestinoException::new);
+         return new DestinoDto(destino);
     }
     public List<DestinoModel> getAll(){
         var list = repository.findAll();
@@ -48,7 +50,7 @@ public class DestinoService {
             return data;
     }
 
-    public void delete(UUID id){
+    public void delete(Long id){
         var depoimento = repository.findById(id);
         if (depoimento.isEmpty()){
             throw new DestinoException("Id: "+ id +" não encontrado!");

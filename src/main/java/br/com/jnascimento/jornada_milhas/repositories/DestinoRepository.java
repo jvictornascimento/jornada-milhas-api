@@ -8,6 +8,6 @@ import java.nio.file.LinkOption;
 import java.util.Optional;
 import java.util.UUID;
 @Repository
-public interface DestinoRepository extends JpaRepository<DestinoModel, UUID> {
+public interface DestinoRepository extends JpaRepository<DestinoModel, Long> {
     Optional<DestinoModel> findByNomeContainingIgnoreCase(String name);
 }

@@ -6,7 +6,7 @@ public class DestinoException extends RuntimeException {
     @Serial
     private static final long serialVersionUID =1L;
     public DestinoException() {
-        super("Id não encontrado");
+        super("Destino não encontrado");
     }
     public DestinoException(String message) {
         super(message);
